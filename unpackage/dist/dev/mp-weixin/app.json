@@ -1,14 +1,46 @@
 {
   "pages": [
-    "pages/login/login"
+    "pages/login/login",
+    "pages/home/main_home",
+    "pages/regist/regist_info",
+    "pages/my/my",
+    "pages/login/forget_pwd"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap35.json"
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "",
+    "color": "#8F8F94",
+    "selectedColor": "#4C7DFD",
+    "list": [
+      {
+        "pagePath": "pages/home/main_home",
+        "iconPath": "static/img/tabbar/home.png",
+        "selectedIconPath": "static/img/tabbar/homeactive.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/regist/regist_info",
+        "iconPath": "static/img/tabbar/regist.png",
+        "selectedIconPath": "static/img/tabbar/registactive.png",
+        "text": "登记"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "static/img/tabbar/my.png",
+        "selectedIconPath": "static/img/tabbar/myactive.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/components/cu-custom"
+  }
 }

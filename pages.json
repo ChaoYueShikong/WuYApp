@@ -3,14 +3,66 @@
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/home/main_home",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/regist/regist_info",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/login/forget_pwd",
+			"style": {
+
 			}
 		}
+
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "",
+		"color": "#8F8F94",
+		"selectedColor": "#4C7DFD",
+		"list": [{
+				"pagePath": "pages/home/main_home",
+				"iconPath": "static/img/tabbar/home.png",
+				"selectedIconPath": "static/img/tabbar/homeactive.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/regist/regist_info",
+				"iconPath": "static/img/tabbar/regist.png",
+				"selectedIconPath": "static/img/tabbar/registactive.png",
+				"text": "登记"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/img/tabbar/my.png",
+				"selectedIconPath": "static/img/tabbar/myactive.png",
+				"text": "我的"
+			}
+		]
 	}
 }

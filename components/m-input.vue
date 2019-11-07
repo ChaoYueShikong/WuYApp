@@ -16,7 +16,6 @@
 <script>
 	import mIcon from './m-icon/m-icon.vue'
 	
-
 	export default {
 		components: {
 			mIcon
@@ -114,14 +113,15 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		width: 90%;
-		height: 50px;
+		width: 100%;
+		height: 46px;
 		flex: 1;
 		padding: 0rpx 30rpx;
 		border-radius: 60px;
 		border: #F7F8FA;
 		background-color: #F7F8FA;
 		font-size: 16px;
+		margin-top: 10px;
 	}
 
 	.m-input-input {

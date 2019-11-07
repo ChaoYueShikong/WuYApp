@@ -1,8 +1,8 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/main"],[
 /* 0 */
-/*!***********************************!*\
-  !*** E:/HBApp/UniAppTest/main.js ***!
-  \***********************************/
+/*!**********************************!*\
+  !*** E:/SmallPro/WuYApp/main.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11,7 +11,11 @@
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
-_vue.default.config.productionTip = false;
+_vue.default.config.productionTip = false;var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | components/cu-custom */ "components/cu-custom").then(__webpack_require__.bind(null, /*! ./components/cu-custom.vue */ 50));};
+
+
+_vue.default.component('cu-custom', cuCustom);
+
 
 _App.default.mpType = 'app';
 
@@ -31,9 +35,9 @@ createApp(app).$mount();
 /* 7 */,
 /* 8 */,
 /* 9 */
-/*!***********************************!*\
-  !*** E:/HBApp/UniAppTest/App.vue ***!
-  \***********************************/
+/*!**********************************!*\
+  !*** E:/SmallPro/WuYApp/App.vue ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -64,14 +68,14 @@ var component = Object(_D_rusoftwear_HBuilder_HBuilderX_2_3_7_20191024_full_HBui
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "E:/HBApp/UniAppTest/App.vue"
+component.options.__file = "E:/SmallPro/WuYApp/App.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 /* 10 */
-/*!************************************************************!*\
-  !*** E:/HBApp/UniAppTest/App.vue?vue&type=script&lang=js& ***!
-  \************************************************************/
+/*!***********************************************************!*\
+  !*** E:/SmallPro/WuYApp/App.vue?vue&type=script&lang=js& ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -84,17 +88,118 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 11 */
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/HBApp/UniAppTest/App.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/SmallPro/WuYApp/App.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   onLaunch: function onLaunch() {
-    console.log('App Launch');
+    uni.getSystemInfo({
+      success: function success(e) {
+
+
+
+
+
+
+
+
+
+
+        _vue.default.prototype.StatusBar = e.statusBarHeight;
+        var custom = wx.getMenuButtonBoundingClientRect();
+        _vue.default.prototype.Custom = custom;
+        _vue.default.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+
+
+
+
+
+
+      } });
+
+
+    _vue.default.prototype.ColorList = [{
+      title: '嫣红',
+      name: 'red',
+      color: '#e54d42' },
+
+    {
+      title: '桔橙',
+      name: 'orange',
+      color: '#f37b1d' },
+
+    {
+      title: '明黄',
+      name: 'yellow',
+      color: '#fbbd08' },
+
+    {
+      title: '橄榄',
+      name: 'olive',
+      color: '#8dc63f' },
+
+    {
+      title: '森绿',
+      name: 'green',
+      color: '#39b54a' },
+
+    {
+      title: '天青',
+      name: 'cyan',
+      color: '#1cbbb4' },
+
+    {
+      title: '海蓝',
+      name: 'blue',
+      color: '#0081ff' },
+
+    {
+      title: '姹紫',
+      name: 'purple',
+      color: '#6739b6' },
+
+    {
+      title: '木槿',
+      name: 'mauve',
+      color: '#9c26b0' },
+
+    {
+      title: '桃粉',
+      name: 'pink',
+      color: '#e03997' },
+
+    {
+      title: '棕褐',
+      name: 'brown',
+      color: '#a5673f' },
+
+    {
+      title: '玄灰',
+      name: 'grey',
+      color: '#8799a3' },
+
+    {
+      title: '草灰',
+      name: 'gray',
+      color: '#aaaaaa' },
+
+    {
+      title: '墨黑',
+      name: 'black',
+      color: '#333333' },
+
+    {
+      title: '雅白',
+      name: 'white',
+      color: '#ffffff' }];
+
+
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -102,12 +207,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onHide: function onHide() {
     console.log('App Hide');
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 12 */
-/*!********************************************************************!*\
-  !*** E:/HBApp/UniAppTest/App.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************/
+/*!*******************************************************************!*\
+  !*** E:/SmallPro/WuYApp/App.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -120,9 +226,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 /* 13 */
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/HBApp/UniAppTest/App.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader??ref--0-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/SmallPro/WuYApp/App.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

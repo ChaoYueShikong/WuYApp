@@ -6,12 +6,15 @@
 				<text class="login" style="color: #BEBFC1; font-size: 16px; ">登录</text>
 				<m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
 			</view>
-			<view class="input-row">
+			<view class="input-row" style="margin-top: 10px;">
 				<text class="title" style="color: #BEBFC1; font-size: 16px;">密码</text>
 				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
 			</view>
 			<view class="btn-row">
-			    <button  class="primary"   @tap="bindLogin">登录</button>
+				<button class="primary" @tap="bindLogin">登录</button>
+			</view>
+			<view class="btn-forget-pwd" >
+				<text @tap="toForgetPwd">忘记密码?</text>
 			</view>
 		</view>
 	</view>
@@ -29,26 +32,38 @@
 		},
 		data() {
 			return {
-				account:'',
-				password:''
+				account: '',
+				password: ''
 			}
 		},
-		methods:{
-			bindLogin(){
+		methods: {
+			bindLogin() {
 				if (this.account.length == 0 || this.account.length != 11) {
 					uni.showToast({
-						icon:'none',
-						title:'请输入长度为11的手机号!'
+						icon: 'none',
+						title: '请输入长度为11的手机号!'
 					});
 					return;
 				}
 				if (this.password == "" && this.password.length < 6) {
 					uni.showToast({
-						icon:'none',
-						title:'请输入长度大于等于6位数的密码!'
+						icon: 'none',
+						title: '请输入长度大于等于6位数的密码!'
 					});
 					return;
 				}
+
+				/* 请求登录接口，登陆成功跳转首页 */
+				uni.navigateTo({
+					url: '../home/main_home',
+				});
+			},
+			toForgetPwd() {
+				/* 跳转忘记密码界面 */
+				uni.navigateTo({
+					url:'../login/forget_pwd'
+				})
+
 			}
 		}
 	}
@@ -56,27 +71,36 @@
 
 <style>
 	.content {
-		height: 520px;
-		width: 370px;
+		width: 100%;
+		height: 70%;
 		background-image: url(../../static/img/bg_card.png);
-		float: left;
 		background-size: 100% 100%;
+		position: absolute;
+		margin-top: 160upx;
 	}
 
 	.login-group {
 		margin-left: 10%;
 		margin-right: 10%;
 	}
-	.primary{
+
+	.primary {
 		margin-top: 30upx;
-		background: #BEBFC1;
-		border: #BEBFC1;
-		border-radius: 40upx;
+		background: #4C7DFD;
+		border: none;;
+		border-radius: 60upx;
 		color: #FFFFFF;
 		font-size: 30upx;
 		text-align: center;
-		padding-top: 10upx;
-		width: 90%;
-		height: 50px;
+		padding-top: 6upx;
+		font-weight: bold;
+	}
+
+	.btn-forget-pwd {
+		text-align: center;
+		color: #262628;
+		font-size: 30upx;
+		font-weight: bold;
+		margin-top: 50upx;
 	}
 </style>

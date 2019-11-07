@@ -108,7 +108,7 @@
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/m-input":"components/m-input","components/m-icon/m-icon":"components/m-icon/m-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/cu-custom":"components/cu-custom","components/m-input":"components/m-input","components/m-icon/m-icon":"components/m-icon/m-icon"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

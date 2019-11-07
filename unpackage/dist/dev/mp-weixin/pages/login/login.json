@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "uni-app",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "m-input": "/components/m-input"
   }
