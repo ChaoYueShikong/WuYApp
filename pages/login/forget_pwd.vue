@@ -16,7 +16,7 @@
 				<input id="verCodeId" type="text" v-model="verCode" placeholder="请输入验证码" selection-start="-1" selection-end="-1"
 				 cursor="-1"></input>
 				<!-- <button class='cu-btn bg-green shadow' @tap="sendCode(this)">发送验证码</button> -->
-				<button class='cu-btn bg-blue shadow ' @click="getCode" :disabled="disabled" >
+				<button class='cu-btn bg-blue shadow' @click="getCode" :disabled="disabled" >
 					{{countdown}} <text v-show="timestatus">秒重获</text>
 				</button>
 			</view>

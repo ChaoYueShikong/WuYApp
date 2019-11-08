@@ -123,6 +123,15 @@
   
   （QQ交流群：240787041）
 */
+/* ====================
+   标题
+   ====================
+ */
+.cuIcon-title{
+	 color: #000000;
+	 font-weight: bold;
+	 font-size: 20rpx;
+}
 /* ==================
         初始化
  ==================== */
@@ -965,12 +974,12 @@ button.cuIcon.lg {
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	background-color: #ccc;
+	/* background-color: #ccc; */
 	color: #ffffff;
 	white-space: nowrap;
 	position: relative;
-	width: 64rpx;
-	height: 64rpx;
+	width: 30rpx;
+	height: 30rpx;
 	background-size: cover;
 	background-position: center;
 	vertical-align: middle;
@@ -1368,7 +1377,7 @@ to {
 	line-height: 32rpx
 }
 .cu-list.menu-avatar>.cu-item .action {
-	width: 100rpx;
+	width: 200rpx;
 	text-align: center
 }
 .cu-list.menu-avatar>.cu-item .action view+view {
@@ -3655,8 +3664,14 @@ scroll-view.cu-steps .cu-item {
 	color: #ffffff;
 }
 .bg-gradual-pink {
-	/* background-image: linear-gradient(45deg, #ec008c, #6739b6); */
+	background-image: -o-linear-gradient(45deg, #ec008c, #6739b6);
+	background-image: linear-gradient(45deg, #ec008c, #6739b6);
 	color: #000000;
+}
+.bg-gradual-white {
+	background-image: -o-linear-gradient(45deg, #ffffff, #ffffff);
+	background-image: linear-gradient(45deg, #ffffff, #ffffff);
+	color: #ffffff;
 }
 .bg-gradual-blue {
 	background-image: -o-linear-gradient(45deg, #0081ff, #1cbbb4);

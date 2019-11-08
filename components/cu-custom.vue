@@ -6,9 +6,9 @@
 					<text class="cuIcon-back"></text>
 					<slot name="backText"></slot>
 				</view>
-				<!-- <view class="content" :style="[{top:StatusBar + 'px'}]">
+				<view  v-if="displayable_" class="content" :style="[{top:StatusBar + 'px'}]">
 					<slot name="content"></slot>
-				</view> -->
+				</view>
 				<slot name="right"></slot>
 			</view>
 		</view>
@@ -34,6 +34,9 @@
 					style = `${style}background-image:url(${bgImage});`;
 				}
 				return style
+			},
+			displayable_() {
+				return String(this.displayable) !== 'false'
 			}
 		},
 		props: {
@@ -61,5 +64,9 @@
 </script>
 
 <style>
-
+   .content{
+	   font-size: 18px;
+	   color: #000000;
+	   font-weight: bold;
+   }
 </style>

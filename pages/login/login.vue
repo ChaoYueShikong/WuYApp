@@ -54,9 +54,10 @@
 				}
 
 				/* 请求登录接口，登陆成功跳转首页 */
-				uni.navigateTo({
-					url: '../home/main_home',
-				});
+				uni.reLaunch({
+					url: '../home/main_home'
+				})
+				
 			},
 			toForgetPwd() {
 				/* 跳转忘记密码界面 */

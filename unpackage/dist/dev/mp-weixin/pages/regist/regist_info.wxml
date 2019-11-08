@@ -1,1 +1,1 @@
-<view class="regist-info">登记</view>
+<view><cu-custom vue-id="1" bgColor="bg-gradual-white" displayable isBack="{{false}}" bind:__l="__l" vue-slots="{{['content']}}"><view slot="content">住户信息登记</view></cu-custom></view>
