@@ -6,7 +6,6 @@ Vue.config.productionTip = false
 import cuCustom from './components/cu-custom.vue'
 Vue.component('cu-custom',cuCustom)
 
-
 App.mpType = 'app'
 
 const app = new Vue({

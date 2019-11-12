@@ -3,8 +3,7 @@
 		<cu-custom bgColor="bg-gradual-white" displayable :isBack="false">
 			<block slot="content">住户信息登记</block>
 		</cu-custom>
-		<view class="content">
-
+		<view class="content2">
 			<view class="cu-form-group margin-top">
 				<view class="title">姓名</view>
 				<input placeholder="请输入姓名" name="input"></input>
@@ -20,6 +19,7 @@
 			<view class="cu-form-group" style="display: block;">
 				<view class="title">住房信息</view>
 				<input placeholder="杭州市西湖区" name="input"></input>
+
 			</view>
 			<view class="cu-form-group">
 				<view class="action">
@@ -29,38 +29,36 @@
 
 			<view class="cu-form-group">
 				<!-- 上传照片 -->
-				<view class="grid col-2 grid-square flex-sub margin-top">
+				<view class="grid col-2 grid-square flex-sub">
 					<view class="bg-img" v-for="(item,index) in imgList" :key="index" @tap="ViewImage" :data-url="imgList[index]">
 						<image :src="imgList[index]" mode="aspectFill"></image>
 						<view class="cu-tag bg-red" @tap.stop="DelImg" :data-index="index">
 							<text class='cuIcon-close'></text>
 						</view>
 					</view>
-					<!-- 选择上传方式 -->
-					<view class="solids solids2" @tap="showModal" data-target="bottomModal" v-if="imgList.length<1">
-						
+					<view class="bg-img2" @tap="ChooseImage" v-if="imgList.length<1">
+
 					</view>
 				</view>
-			</view>
-			<view style="margin-left: 22%;">身份证正面</view>
-
-			<view class="cu-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
-				<view>
-					<view class="margin-sm bg-white middle_radius  cu-modal-height">
-						<!-- <view class="margin bg-white cu-modal-height" upType = "1" @tap="ChooseImage">
-							<view class="action text-black text-sm">相册选择</view>
-						</view> -->
-						<view class="margin bg-white cu-modal-height" @tap="ChooseImage">
-							<view class="action text-black text-sm">拍照上传</view>
+				<view class="grid col-2 grid-square flex-sub ">
+					<view class="bg-img" v-for="(item,index) in imgList2" :key="index" @tap="ViewImage2" :data-url="imgList2[index]">
+						<image :src="imgList2[index]" mode="aspectFill"></image>
+						<view class="cu-tag bg-red" @tap.stop="DelImg2" :data-index="index">
+							<text class='cuIcon-close'></text>
 						</view>
 					</view>
-				</view>
+					<view class="bg-img3" @tap="ChooseImage2" v-if="imgList2.length<1">
 
-				<view class="margin bg-white middle_radius  cu-modal-height">
-					<view class="action text-black text-sm" @tap="hideModal">取消</view>
+					</view>
 				</view>
 			</view>
-
+			<view style="display: inline; ">
+				<view style="float: left; margin-left: 20%; margin-top: 2%;">身份证正面</view>
+				<view style="float: right; margin-right: 20%;margin-top: 2%;">身份证反面</view>
+			</view>
+			<view class="btn-row">
+				<button class="primary" type="button" @tap="updateInfo">提交</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -140,6 +138,40 @@
 						}
 					}
 				})
+			},
+
+			ChooseImage2() {
+				uni.chooseImage({
+					count: 1, //默认9
+					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album'], //从相册选择
+					success: (res) => {
+						if (this.imgList2.length != 0) {
+							this.imgList2 = this.imgList2.concat(res.tempFilePaths)
+						} else {
+							this.imgList2 = res.tempFilePaths
+						}
+					}
+				});
+			},
+			ViewImage2(e) {
+				uni.previewImage({
+					urls: this.imgList2,
+					current: e.currentTarget.dataset.url
+				});
+			},
+			DelImg2(e) {
+				uni.showModal({
+					title: '删除',
+					content: '确定要删除此照片么吗？',
+					cancelText: '取消',
+					confirmText: '确认',
+					success: res => {
+						if (res.confirm) {
+							this.imgList2.splice(e.currentTarget.dataset.index, 1)
+						}
+					}
+				})
 			}
 		}
 
@@ -149,7 +181,7 @@
 <style>
 	#home-list {}
 
-	.content {
+	.content2 {
 		width: 100%;
 		height: 80%;
 		background-image: url(../../static/img/bg_card.png);
@@ -157,8 +189,33 @@
 		position: absolute;
 		margin-top: 10upx;
 	}
-	.solids2{
+
+	.bg-img2 {
+		background-image: url(../../static/img/ic_card_font.png);
+		display: flex;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.bg-img3 {
 		background-image: url(../../static/img/ic_card_reverse.png);
 		display: flex;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.primary {
+		margin-top: 18%;
+		background: #4C7DFD;
+		border: #4C7DFD;
+		border-radius: 60upx;
+		color: #FFFFFF;
+		font-size: 30upx;
+		font-weight: bold;
+		margin-left: 10%;
+		margin-right: 10%;
+		padding: 2%;
 	}
 </style>

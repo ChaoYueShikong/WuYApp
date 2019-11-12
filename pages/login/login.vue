@@ -73,7 +73,7 @@
 <style>
 	.content {
 		width: 100%;
-		height: 70%;
+		height: 80%;
 		background-image: url(../../static/img/bg_card.png);
 		background-size: 100% 100%;
 		position: absolute;
@@ -86,7 +86,7 @@
 	}
 
 	.primary {
-		margin-top: 30upx;
+		margin-top: 15%;
 		background: #4C7DFD;
 		border: none;;
 		border-radius: 60upx;
@@ -95,6 +95,7 @@
 		text-align: center;
 		padding-top: 6upx;
 		font-weight: bold;
+		padding: 2%;
 	}
 
 	.btn-forget-pwd {

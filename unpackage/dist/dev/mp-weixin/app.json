@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/home/main_home",
+    "pages/regist/regist_info_1",
     "pages/login/login",
-    "pages/regist/regist_info",
-    "pages/my/my",
-    "pages/login/forget_pwd"
+    "pages/login/forget_pwd",
+    "pages/home/main_home",
+    "pages/my/my"
   ],
   "subPackages": [],
   "window": {
@@ -27,7 +27,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/regist/regist_info",
+        "pagePath": "pages/regist/regist_info_1",
         "iconPath": "static/img/tabbar/regist.png",
         "selectedIconPath": "static/img/tabbar/registactive.png",
         "text": "登记"
@@ -43,5 +43,5 @@
   "usingComponents": {
     "cu-custom": "/components/cu-custom"
   },
-  "sitemapLocation": "sitemap32.json"
+  "sitemapLocation": "sitemap63.json"
 }

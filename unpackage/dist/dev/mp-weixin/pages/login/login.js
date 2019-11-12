@@ -167,7 +167,7 @@ var _vuex = __webpack_require__(/*! vuex */ 29); //
 //
 //
 //
-var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../components/m-input.vue */ 59));};var _default = { components: { mInput: mInput }, data: function data() {return { account: '', password: '' };}, methods: { bindLogin: function bindLogin() {if (this.account.length == 0 || this.account.length != 11) {uni.showToast({ icon: 'none', title: '请输入长度为11的手机号!' });return;
+var mInput = function mInput() {return __webpack_require__.e(/*! import() | components/m-input */ "components/m-input").then(__webpack_require__.bind(null, /*! ../../components/m-input.vue */ 61));};var _default = { components: { mInput: mInput }, data: function data() {return { account: '', password: '' };}, methods: { bindLogin: function bindLogin() {if (this.account.length == 0 || this.account.length != 11) {uni.showToast({ icon: 'none', title: '请输入长度为11的手机号!' });return;
       }
       if (this.password == "" && this.password.length < 6) {
         uni.showToast({

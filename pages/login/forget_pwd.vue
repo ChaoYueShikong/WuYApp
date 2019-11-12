@@ -1,7 +1,7 @@
 <template>
 
-	<view class="content">
-		<cu-custom bgColor="bg-gradual-pink" :isBack="true">
+	<view class="content2">
+		<cu-custom bgColor="bg-gradual-white" :isBack="true">
 			<block slot="backText">返回</block>
 			<block slot="content">忘记密码</block>
 		</cu-custom>
@@ -93,7 +93,7 @@
 </script>
 
 <style>
-	.content {
+	.content2 {
 		width: 100%;
 		height: 70%;
 		background-image: url(../../static/img/bg_card.png);
@@ -115,6 +115,7 @@
 		color: #FFFFFF;
 		font-size: 30upx;
 		font-weight: bold;
+		padding: 2%;
 	}
 
 	.input-row2 {

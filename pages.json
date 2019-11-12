@@ -1,37 +1,27 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/home/main_home",
-			"style": {
-				"navigationBarTitleText": ""
-			}
+			"path": "pages/regist/regist_info_1",
+			"style": {}
 		},
 		{
 			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": ""
-			}
+			"style": {}
 		},
 		{
-			"path": "pages/regist/regist_info",
-			"style": {
-				"navigationBarTitleText": ""
-			}
+			"path": "pages/login/forget_pwd",
+			"style": {}
+		},
+		{
+			"path": "pages/home/main_home",
+			"style": {}
 		},
 		{
 			"path": "pages/my/my",
 			"style": {
-				"navigationBarTitleText": ""
-			}
-		},
-		{
-			"path": "pages/login/forget_pwd",
-			"style": {
-
+				// "navigationBarTitleText": ""
 			}
 		}
-
-
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -52,7 +42,7 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/regist/regist_info",
+				"pagePath": "pages/regist/regist_info_1",
 				"iconPath": "static/img/tabbar/regist.png",
 				"selectedIconPath": "static/img/tabbar/registactive.png",
 				"text": "登记"
