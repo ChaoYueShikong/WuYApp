@@ -29,9 +29,9 @@
 							<text class="cuIcon-title text-blue"></text> 1幢{{item.name}}</view>
 					</view>
 					<view class="cu-list menu-avatar">
-						<view class="cu-item shadow">
+						<view class="cu-item shadow" >
 							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
-							<view class="content ">
+							<view class="content" @tap="toDeviceDetail">
 								<view class="text-black">1单元</view>
 							</view>
 							<view class="action">
@@ -144,8 +144,13 @@
 						return false
 					}
 				}
+			},
+			toDeviceDetail(){
+				uni.navigateTo({
+					url: '../device/device_detail'
+				})
 			}
-		},
+		}
 	}
 </script>
 

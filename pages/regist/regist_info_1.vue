@@ -16,10 +16,23 @@
 				<view class="title">身份证号</view>
 				<input placeholder="请输入身份证号" name="input"></input>
 			</view>
-			<view class="cu-form-group" style="display: block;">
+			<!-- #ifndef H5 || APP-PLUS || MP-ALIPAY -->
+			<view class="cu-form-group">
 				<view class="title">住房信息</view>
-				<input placeholder="杭州市西湖区" name="input"></input>
-
+				<picker mode="region" @change="RegionChange" :value="region">
+					<view class="picker">
+						{{region[0]}}，{{region[1]}}，{{region[2]}}
+					</view>
+				</picker>
+			</view>
+			<!-- #endif -->
+			<view class="cu-form-group ">
+				<view class="title">室</view>
+				<picker @change="PickerChange" :value="index" :range="picker">
+					<view class="picker">
+						{{index>-1?picker[index]:'301室'}}
+					</view>
+				</picker>
 			</view>
 			<view class="cu-form-group">
 				<view class="action">
@@ -67,6 +80,8 @@
 	export default {
 		data() {
 			return {
+				index: -1,
+				picker: ['301室', '302室', '303室'],
 				list: [],
 				tabCur: 0,
 				mainCur: 0,
@@ -77,7 +92,8 @@
 				imgList: [],
 				imgList2: [],
 				modalName: null,
-				upType: ''
+				upType: '',
+				region: ['水印康庭', '9幢', '6单元']
 			};
 		},
 		onLoad() {
@@ -98,6 +114,9 @@
 			uni.hideLoading()
 		},
 		methods: {
+			PickerChange(e) {
+				this.index = e.detail.value
+			},
 			showModal(e) {
 				this.modalName = e.currentTarget.dataset.target
 			},
@@ -139,7 +158,6 @@
 					}
 				})
 			},
-
 			ChooseImage2() {
 				uni.chooseImage({
 					count: 1, //默认9
@@ -172,6 +190,9 @@
 						}
 					}
 				})
+			},
+			RegionChange(e) {
+				this.region = e.detail.value
 			}
 		}
 
@@ -183,11 +204,11 @@
 
 	.content2 {
 		width: 100%;
-		height: 80%;
+		height: 84%;
 		background-image: url(../../static/img/bg_card.png);
 		background-size: 100% 100%;
 		position: absolute;
-		margin-top: 10upx;
+		
 	}
 
 	.bg-img2 {
@@ -207,7 +228,7 @@
 	}
 
 	.primary {
-		margin-top: 18%;
+		margin-top: 15%;
 		background: #4C7DFD;
 		border: #4C7DFD;
 		border-radius: 60upx;

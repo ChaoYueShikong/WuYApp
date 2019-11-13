@@ -1,0 +1,33 @@
+
+.content2 {
+	width: 100%;
+	padding: 50rpx;
+	background-color: #FFFFFF;
+	position: absolute;
+	margin-top: 10rpx;
+}
+.sys_version {
+	color: #6B6B6B;
+	font-size: 30rpx;
+	font-weight: bold;
+	float: left;
+}
+.sys_version_text {
+	color: #6B6B6B;
+	font-size: 30rpx;
+	font-weight: bold;
+	float: right;
+}
+.primary {
+	margin-top: 30%;
+	background: #BEBFC1;
+	border: #BEBFC1;
+	border-radius: 60rpx;
+	color: #FFFFFF;
+	font-size: 30rpx;
+	font-weight: bold;
+	padding: 2%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+

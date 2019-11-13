@@ -1,0 +1,1 @@
+<view style="background-color:#FFFFFF;"><cu-custom vue-id="1" bgColor="bg-gradual-white" isBack="{{true}}" bind:__l="__l" vue-slots="{{['backText','content']}}"><view slot="backText">返回</view><view slot="content">设备详情</view></cu-custom><view class="content2"></view></view>
