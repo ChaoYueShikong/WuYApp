@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/home/main_home",
     "pages/my/my",
     "pages/regist/regist_info_1",
     "pages/login/login",
     "pages/login/forget_pwd",
-    "pages/home/main_home",
     "pages/my/setting",
     "pages/device/device_detail"
   ],
@@ -44,5 +44,6 @@
   },
   "usingComponents": {
     "cu-custom": "/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap64.json"
 }

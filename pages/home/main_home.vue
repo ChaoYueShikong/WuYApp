@@ -34,7 +34,7 @@
 							<view class="content" @tap="toDeviceDetail">
 								<view class="text-black">1单元</view>
 							</view>
-							<view class="action">
+							<view class="action" @tap="openLock">
 								<button class="cu-tag round bg-blue shadow">立即开锁</button>
 							</view>
 						</view>
@@ -46,7 +46,7 @@
 									<text class="text-cut">2单元</text>
 								</view>
 							</view>
-							<view class="action">
+							<view class="action" >
 								<button class="cu-tag round bg-blue shadow ">立即开锁</button>
 							</view>
 						</view>
@@ -91,7 +91,7 @@
 				load: true,
 				StatusBar: this.StatusBar,
 				CustomBar: this.CustomBar
-			};
+			}
 		},
 		onLoad() {
 			uni.showLoading({
@@ -149,6 +149,29 @@
 				uni.navigateTo({
 					url: '../device/device_detail'
 				})
+			},
+			openLock(){
+				var isSuccess = false;
+				if (isSuccess) {
+					uni.showToast({
+						image:'../../static/img/ic_success.png',
+						title:'开锁成功'
+					})
+				}else{
+					uni.showModal({
+						title:'提示',
+						cancelColor:'#A8A8A9',
+						content:'开锁失败，请重试!',
+						confirmColor:'#4C7DFD',
+						success(res) {
+							if(res.confirm){
+								console.log("点击确认");
+							}else{
+								console.log("点击取消");
+							}
+						}
+					})
+				}
 			}
 		}
 	}

@@ -237,6 +237,6 @@
 		font-weight: bold;
 		margin-left: 10%;
 		margin-right: 10%;
-		padding: 2%;
+		padding: 1.5%;
 	}
 </style>

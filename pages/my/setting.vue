@@ -18,7 +18,7 @@
 <script>
 	export default{
 		data(){
-			
+			return{}
 		},
 		onLoad() {
 			uni.showLoading({

@@ -645,9 +645,9 @@ radio.white.checked .uni-radio-input {
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	padding: 0 30upx;
+	padding: 0 32upx;
 	font-size: 10px;
-	height: 64upx;
+	height: 60upx;
 	line-height: 1;
 	text-align: center;
 	text-decoration: none;
@@ -763,8 +763,8 @@ button.cuIcon.lg {
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	padding: 0upx 16upx;
-	height: 48upx;
+	padding: 0upx 22upx;
+	height: 46upx;
 	font-family: Helvetica Neue, Helvetica, sans-serif;
 	white-space: nowrap;
 }
@@ -3632,7 +3632,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .bg-gradual-blue {
-	background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+	background-image: linear-gradient(45deg, #0081ff, #3388FF);
 	color: #ffffff;
 }
 

@@ -7601,7 +7601,19 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 37:
+/***/ 4:
+/*!*************************************!*\
+  !*** E:/SmallPro/WuYApp/pages.json ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ 45:
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
@@ -8552,18 +8564,6 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 4:
-/*!*************************************!*\
-  !*** E:/SmallPro/WuYApp/pages.json ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
 /***/ 5:
 /*!*******************************************************!*\
   !*** ./node_modules/@dcloudio/uni-stat/dist/index.js ***!
@@ -9470,7 +9470,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/my/my": { "usingComponents": {} }, "pages/regist/regist_info_1": { "usingComponents": {} }, "pages/login/login": { "usingComponents": { "m-input": "/components/m-input" } }, "pages/login/forget_pwd": { "usingComponents": { "m-input": "/components/m-input" } }, "pages/home/main_home": { "usingComponents": {} }, "pages/my/setting": { "usingComponents": {} }, "pages/device/device_detail": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8", "navigationStyle": "custom" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/home/main_home": { "usingComponents": {} }, "pages/my/my": { "usingComponents": {} }, "pages/regist/regist_info_1": { "usingComponents": {} }, "pages/login/login": { "usingComponents": { "m-input": "/components/m-input" } }, "pages/login/forget_pwd": { "usingComponents": { "m-input": "/components/m-input" } }, "pages/my/setting": { "usingComponents": {} }, "pages/device/device_detail": { "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8", "navigationStyle": "custom" } };exports.default = _default;
 
 /***/ }),
 
