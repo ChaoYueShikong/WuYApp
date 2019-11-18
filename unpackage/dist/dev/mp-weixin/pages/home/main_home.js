@@ -183,47 +183,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      list: [],
+      listData: [{
+        'buildingsId': '1',
+        'name': '1幢',
+        'units': [{
+          'uName': '1单元',
+          'unitsId': '1',
+          'status': '在线',
+          "type": "1" }] }],
+
+
+
       tabCur: 0,
       mainCur: 0,
       verticalNavTop: 0,
       load: true,
       StatusBar: this.StatusBar,
-      CustomBar: this.CustomBar };
+      CustomBar: this.CustomBar,
+      isDisable: false };
 
   },
   onLoad: function onLoad() {
@@ -231,19 +212,28 @@ var _default =
       title: '加载中...',
       mask: true });
 
-    var list = [{}];
-    for (var i = 0; i < 26; i++) {
-      list[i] = {};
-      list[i].name = String.fromCharCode(65 + i);
-      list[i].id = i;
-    }
-    this.list = list;
-    this.listCur = list[0];
+
   },
+  created: function created() {
+    this.getData();
+  },
+
   onReady: function onReady() {
     uni.hideLoading();
   },
+
   methods: {
+    getData: function getData() {
+      var self = this;
+      var requestTask = uni.request({
+        url: 'http://localhost:3000/moniData',
+        success: function success(res) {
+          self.listData = res.data.buildings;
+          console.log(self.listData);
+        } });
+
+    },
+
     TabSelect: function TabSelect(e) {
       this.tabCur = e.currentTarget.dataset.id;
       this.mainCur = e.currentTarget.dataset.id;
@@ -257,34 +247,47 @@ var _default =
       var tabHeight = 0;
       if (this.load) {var _loop = function _loop(
         i) {
-          var view = uni.createSelectorQuery().select("#main-" + _this.list[i].id);
+          var view = uni.createSelectorQuery().select("#main-" + _this.listData[i].id);
           view.fields({
             size: true },
           function (data) {
-            _this.list[i].top = tabHeight;
-            tabHeight = tabHeight + data.height;
-            _this.list[i].bottom = tabHeight;
-          }).exec();};for (var i = 0; i < this.list.length; i++) {_loop(i);
+            console.log("打印错误：" + data);
+            /*data.height 有可能为  */
+            if (null != data) {
+              tabHeight = tabHeight + data.height;
+            }
+            _this.listData[i].top = tabHeight;
+            _this.listData[i].bottom = tabHeight;
+          }).exec();};for (var i = 0; i < this.listData.length; i++) {_loop(i);
         }
         this.load = false;
       }
       var scrollTop = e.detail.scrollTop + 10;
-      for (var i = 0; i < this.list.length; i++) {
-        if (scrollTop > this.list[i].top && scrollTop < this.list[i].bottom) {
-          this.verticalNavTop = (this.list[i].id - 1) * 50;
-          this.tabCur = this.list[i].id;
+      for (var i = 0; i < this.listData.length; i++) {
+        if (scrollTop > this.listData[i].top && scrollTop < this.listData[i].bottom) {
+          this.verticalNavTop = (this.listData[i].id - 1) * 50;
+          this.tabCur = this.listData[i].id;
           console.log(scrollTop);
           return false;
         }
       }
     },
-    toDeviceDetail: function toDeviceDetail() {
+    toDeviceDetail: function toDeviceDetail(deviceStatus) {//跳转设备详情
+      console.log("设备状态：" + deviceStatus);
       uni.navigateTo({
         url: '../device/device_detail' });
 
     },
-    openLock: function openLock() {
-      var isSuccess = false;
+    openLock: function openLock(val) {
+      var isSuccess = true;
+      console.log(val.uName + ":" + val.type + ":" + val.status);
+      if (val.type !== "1") {
+        uni.showToast({
+          image: '../../static/img/ic_offline.png',
+          title: "设备已离线" });
+
+        return;
+      }
       if (isSuccess) {
         uni.showToast({
           image: '../../static/img/ic_success.png',
@@ -305,6 +308,8 @@ var _default =
           } });
 
       }
+
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

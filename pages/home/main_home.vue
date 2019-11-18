@@ -15,64 +15,34 @@
 		<view class="VerticalBox">
 			<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation :scroll-top="verticalNavTop" style="height:calc(100vh - 64px - 50px)">
 				<!-- 左边列表item的标题 -->
-				<view class="cu-item" :class="index==tabCur?'text-blue cur':''" v-for="(item,index) in list" :key="index" @tap="TabSelect"
+				<view class="cu-item" :class="index==tabCur?'text-blue cur ':''" v-for="(item,index) in listData" :key="index" @tap="TabSelect"
 				 :data-id="index">
-					1幢-{{item.name}}
+					{{item.name}}
 				</view>
 			</scroll-view>
 			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 64px - 50px)"
 			 :scroll-into-view="'main-'+mainCur" @scroll="VerticalMain">
-				<view class="padding-lr" v-for="(item,index) in list" :key="index" :id="'main-'+index">
+				<view class="padding-lr" v-for="(item,index) in listData" :key="index" :id="'main-'+index">
 					<view class="cu-bar solid-bottom bg-white">
 						<view class="action">
-							<!-- 左边导航的item标题 -->
-							<text class="cuIcon-title text-blue"></text> 1幢{{item.name}}</view>
+							<!-- 右边列表导航的item标题 -->
+							<text class="cuIcon-title text-blue"></text>{{item.name}}
+						</view>
 					</view>
-					<view class="cu-list menu-avatar">
-						<view class="cu-item shadow" >
-							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
-							<view class="content" @tap="toDeviceDetail">
-								<view class="text-black">1单元</view>
-							</view>
-							<view class="action" @tap="openLock">
-								<button class="cu-tag round bg-blue shadow">立即开锁</button>
-							</view>
-						</view>
-						<view class="cu-item shadow">
-							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);">
-							</view>
-							<view class="content">
-								<view class="text-black ">
-									<text class="text-cut">2单元</text>
-								</view>
-							</view>
-							<view class="action" >
-								<button class="cu-tag round bg-blue shadow ">立即开锁</button>
-							</view>
-						</view>
-						<view class="cu-item  shadow">
-							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
-							<view class="content">
-								<view class="text-black ">
-									<text class="text-cut">3单元</text>
-								</view>
-							</view>
-							<view class="action">
-								<button class="cu-tag round bg-grey shadow "> 离线中··· </button>
-							</view>
-						</view>
-						<view class="cu-item grayscale shadow">
-							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
-							<view class="content">
-								<view class="text-black">
-									<text class="text-cut">4单元</text>
-								</view>
-							</view>
-							<view class="action">
-								<button class="cu-tag round bg-grey shadow ">离线中···</button>
-							</view>
-						</view>
 
+					<view class="cu-list menu-avatar" v-for="(item2,index2) in item.units" :key="index2" :id="'item-' + index2">
+						<view class="cu-item">
+							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
+							<view class="content" @tap="toDeviceDetail(item2.status)">
+								<view class="text-black">{{item2.uName}}</view>
+							</view>
+							<view class="action" @tap="openLock(item2)">
+								<button class="cu-tag round  shadow  text-white" :style="{'background-color':item2.status == '离线中···'?'#8799a3':'#0081ff'}">
+									{{item2.status}}
+								</button>
+							</view>
+						</view>
+					
 					</view>
 				</view>
 			</scroll-view>
@@ -84,13 +54,24 @@
 	export default {
 		data() {
 			return {
-				list: [],
+				listData: [{
+					'buildingsId': '1',
+					'name': '1幢',
+					'units': [{
+						'uName': '1单元',
+						'unitsId': '1',
+						'status': '在线',
+						"type": "1"
+					}]
+				}],
+
 				tabCur: 0,
 				mainCur: 0,
 				verticalNavTop: 0,
 				load: true,
 				StatusBar: this.StatusBar,
-				CustomBar: this.CustomBar
+				CustomBar: this.CustomBar,
+				isDisable: false
 			}
 		},
 		onLoad() {
@@ -98,19 +79,28 @@
 				title: '加载中...',
 				mask: true
 			});
-			let list = [{}];
-			for (let i = 0; i < 26; i++) {
-				list[i] = {};
-				list[i].name = String.fromCharCode(65 + i);
-				list[i].id = i;
-			}
-			this.list = list;
-			this.listCur = list[0];
+
 		},
+		created() {
+			this.getData();
+		},
+
 		onReady() {
 			uni.hideLoading()
 		},
+
 		methods: {
+			getData() {
+				var self = this;
+				const requestTask = uni.request({
+					url: 'http://localhost:3000/moniData',
+					success(res) {
+						self.listData = res.data.buildings;
+						console.log(self.listData);
+					}
+				})
+			},
+
 			TabSelect(e) {
 				this.tabCur = e.currentTarget.dataset.id;
 				this.mainCur = e.currentTarget.dataset.id;
@@ -123,55 +113,70 @@
 				let that = this;
 				let tabHeight = 0;
 				if (this.load) {
-					for (let i = 0; i < this.list.length; i++) {
-						let view = uni.createSelectorQuery().select("#main-" + this.list[i].id);
+					for (let i = 0; i < this.listData.length; i++) {
+						let view = uni.createSelectorQuery().select("#main-" + this.listData[i].id);
 						view.fields({
 							size: true
 						}, data => {
-							this.list[i].top = tabHeight;
-							tabHeight = tabHeight + data.height;
-							this.list[i].bottom = tabHeight;
+							console.log("打印错误：" + data)
+							/*data.height 有可能为  */
+							if(null != data){
+								tabHeight = tabHeight + data.height;
+							}
+							this.listData[i].top = tabHeight;
+							this.listData[i].bottom = tabHeight;
 						}).exec();
 					}
 					this.load = false
 				}
 				let scrollTop = e.detail.scrollTop + 10;
-				for (let i = 0; i < this.list.length; i++) {
-					if (scrollTop > this.list[i].top && scrollTop < this.list[i].bottom) {
-						this.verticalNavTop = (this.list[i].id - 1) * 50
-						this.tabCur = this.list[i].id
+				for (let i = 0; i < this.listData.length; i++) {
+					if (scrollTop > this.listData[i].top && scrollTop < this.listData[i].bottom) {
+						this.verticalNavTop = (this.listData[i].id - 1) * 50
+						this.tabCur = this.listData[i].id
 						console.log(scrollTop)
 						return false
 					}
 				}
 			},
-			toDeviceDetail(){
+			toDeviceDetail(deviceStatus) { //跳转设备详情
+				console.log("设备状态：" + deviceStatus)
 				uni.navigateTo({
 					url: '../device/device_detail'
 				})
 			},
-			openLock(){
-				var isSuccess = false;
+			openLock(val) {
+				var isSuccess = true;
+				console.log(val.uName + ":" + val.type + ":" + val.status);
+				if (val.type !== "1") {
+					uni.showToast({
+						image: '../../static/img/ic_offline.png',
+						title: "设备已离线"
+					})
+					return;
+				}
 				if (isSuccess) {
 					uni.showToast({
-						image:'../../static/img/ic_success.png',
-						title:'开锁成功'
+						image: '../../static/img/ic_success.png',
+						title: '开锁成功'
 					})
-				}else{
+				} else {
 					uni.showModal({
-						title:'提示',
-						cancelColor:'#A8A8A9',
-						content:'开锁失败，请重试!',
-						confirmColor:'#4C7DFD',
+						title: '提示',
+						cancelColor: '#A8A8A9',
+						content: '开锁失败，请重试!',
+						confirmColor: '#4C7DFD',
 						success(res) {
-							if(res.confirm){
+							if (res.confirm) {
 								console.log("点击确认");
-							}else{
+							} else {
 								console.log("点击取消");
 							}
 						}
 					})
 				}
+
+
 			}
 		}
 	}
