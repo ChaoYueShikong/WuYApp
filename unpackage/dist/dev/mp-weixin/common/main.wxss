@@ -130,7 +130,7 @@
 .cuIcon-title {
 	color: #000000;
 	font-weight: bold;
-	font-size: 20rpx;
+	font-size: 30rpx;
 }
 /* ==================
         初始化

@@ -29,11 +29,10 @@
 							<text class="cuIcon-title text-blue"></text>{{item.name}}
 						</view>
 					</view>
-
 					<view class="cu-list menu-avatar" v-for="(item2,index2) in item.units" :key="index2" :id="'item-' + index2">
 						<view class="cu-item">
 							<view class="cu-avatar" style="background-image:url(/static/img/ic_house_black.png);"></view>
-							<view class="content" @tap="toDeviceDetail(item2.status)">
+							<view class="content" @tap="toDeviceDetail(item.buildingsId,item2.unitsId)">
 								<view class="text-black">{{item2.uName}}</view>
 							</view>
 							<view class="action" @tap="openLock(item2)">
@@ -132,21 +131,21 @@
 				let scrollTop = e.detail.scrollTop + 10;
 				for (let i = 0; i < this.listData.length; i++) {
 					if (scrollTop > this.listData[i].top && scrollTop < this.listData[i].bottom) {
-						this.verticalNavTop = (this.listData[i].id - 1) * 50
-						this.tabCur = this.listData[i].id
-						console.log(scrollTop)
-						return false
+						this.verticalNavTop = (this.listData[i].id - 1) * 50;
+						this.tabCur = this.listData[i].id;
+						console.log(scrollTop);
+						return false;
 					}
 				}
 			},
-			toDeviceDetail(deviceStatus) { //跳转设备详情
-				console.log("设备状态：" + deviceStatus)
+			toDeviceDetail(val,val2) { //跳转设备详情
+				console.log("设备buildingID：" + val + "设备单元的id" + val2)
 				uni.navigateTo({
 					url: '../device/device_detail'
 				})
 			},
 			openLock(val) {
-				var isSuccess = true;
+				var isSuccess = false;
 				console.log(val.uName + ":" + val.type + ":" + val.status);
 				if (val.type !== "1") {
 					uni.showToast({

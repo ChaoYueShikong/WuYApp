@@ -1,5 +1,4 @@
 
-#home-list {}
 .content2 {
 	width: 100%;
 	height: 84%;
@@ -38,5 +37,117 @@
 	margin-left: 10%;
 	margin-right: 10%;
 	padding: 1.5%;
+}
+
+/** 关于地址选择样式 */
+.myAddress {
+	width: 100%;
+	background-color: white;
+	border-top: 4px solid rgba(245, 245, 245, 1);
+	color: #333;
+	margin-top: 30%;
+}
+.myAddress .cont {
+	border-bottom: 1px solid rgba(245, 245, 245, 0.8);
+}
+.myAddress .cont ._span {
+	display: inline-block;
+	font-size: 0.28rem;
+	color: #333;
+	line-height: 0.88rem;
+	margin-left: 0.32rem;
+}
+.myAddress .cont ._section {
+	float: left;
+}
+.myAddress .cont ._p {
+	display: inline-block;
+	font-size: 0.28rem;
+	color: #333333;
+	line-height: 0.88rem;
+	margin-left: 1rem;
+}
+.myAddress .cont .pic2 {
+	float: right;
+	width: 0.14rem;
+	height: 0.24rem;
+	margin: 0.32rem 0.32rem 0.32rem 0;
+}
+.myAddress .cont ._p.text {
+	margin-left: 0.72rem;
+}
+.showChose .showChose2 {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 120;
+	background: rgba(0, 0, 0, 0.5);
+}
+.address {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	z-index: 121;
+	background: #fff;
+	width: 100%;
+	font-size: 20px;
+	height: 44%;
+}
+.title {
+	display: inline-block;
+	margin-left: 5%;
+	font-size: 40rpx;
+	line-height: 45px;
+	font-weight: normal;
+	color: #999;
+}
+.title2 {
+	display: inline-block;
+	margin-left: 2%;
+	font-size: 30rpx;
+	line-height: 45px;
+	font-weight: normal;
+	color: #999;
+	margin-top: -4%;
+}
+.title ._span {
+	margin: 0.42rem 0 0 2.2rem;
+	font-size: 20rpx;
+	line-height: 0.34rem;
+	color: #D8D8D8;
+}
+.area {
+	display: inline-block;
+	font-size: 40rpx;
+	line-height: 45rpx;
+	margin-left: 0.42rem;
+	color: #333;
+}
+.addList {
+	width: 100%;
+	padding: 0.32rem;
+	font-size: 40rpx;
+	line-height: 44rpx;
+	color: #333;
+}
+
+/* 修改的格式 */
+.address ._ul {
+	width: 100%;
+	height: 100%;
+	height: 8rem;
+	overflow: auto;
+}
+.address ._ul ._li {
+	margin-left: 5%;
+}
+.address .title .active {
+	color: #4C7DFD;
+	border-bottom: 0.02rem solid #4C7DFD;
+}
+.address ._ul .active {
+	color: #4C7DFD;
 }
 
