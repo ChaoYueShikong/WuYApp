@@ -6,10 +6,10 @@
 		<view class="cu-bar bg-white search fixed" :style="[{top:CustomBar + 'px'}]">
 			<view class="search-form round">
 				<text class="cuIcon-search"></text>
-				<input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
+				<input  type="text" placeholder="搜索幢数如: 6幢" v-model="inputResult" ></input>
 			</view>
 			<view class="action">
-				<button class="cu-btn bg-gradual-blue shadow-blur round">搜索</button>
+				<button class="cu-btn bg-gradual-blue shadow-blur round" @tap="searchBuilding()">搜索</button>
 			</view>
 		</view>
 		<view class="VerticalBox">
@@ -20,9 +20,9 @@
 					{{item.name}}
 				</view>
 			</scroll-view>
-			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 64px - 50px)"
+			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 64px - 50px); padding-left: 4%; padding-right: 4%;"
 			 :scroll-into-view="'main-'+mainCur" @scroll="VerticalMain">
-				<view class="padding-lr" v-for="(item,index) in listData" :key="index" :id="'main-'+index">
+				<view class="padding-lr" v-for="(item,index) in listData" :key="index" :id="'main-'+index"  style="background: white; border: white; border-radius: 20rpx;margin-top: 4%;">
 					<view class="cu-bar solid-bottom bg-white">
 						<view class="action">
 							<!-- 右边列表导航的item标题 -->
@@ -41,7 +41,7 @@
 								</button>
 							</view>
 						</view>
-					
+
 					</view>
 				</view>
 			</scroll-view>
@@ -70,7 +70,8 @@
 				load: true,
 				StatusBar: this.StatusBar,
 				CustomBar: this.CustomBar,
-				isDisable: false
+				isDisable: false,
+				inputResult: '搜索幢数如:6幢'
 			}
 		},
 		onLoad() {
@@ -78,7 +79,6 @@
 				title: '加载中...',
 				mask: true
 			});
-
 		},
 		created() {
 			this.getData();
@@ -99,7 +99,12 @@
 					}
 				})
 			},
-
+			searchBuilding() { //跳转搜索结果界面
+			   var result = this.inputResult.substring(this.inputResult.indexOf(":")+1,this.inputResult.length);
+				uni.navigateTo({
+					url: `../home/search_result?inputResult=${result}`
+				})
+			},
 			TabSelect(e) {
 				this.tabCur = e.currentTarget.dataset.id;
 				this.mainCur = e.currentTarget.dataset.id;
@@ -119,14 +124,14 @@
 						}, data => {
 							console.log("打印错误：" + data)
 							/*data.height 有可能为  */
-							if(null != data){
+							if (null != data) {
 								tabHeight = tabHeight + data.height;
 							}
 							this.listData[i].top = tabHeight;
 							this.listData[i].bottom = tabHeight;
 						}).exec();
 					}
-					this.load = false
+					this.load = false;
 				}
 				let scrollTop = e.detail.scrollTop + 10;
 				for (let i = 0; i < this.listData.length; i++) {
@@ -138,10 +143,9 @@
 					}
 				}
 			},
-			toDeviceDetail(val,val2) { //跳转设备详情
-				console.log("设备buildingID：" + val + "设备单元的id" + val2)
+			toDeviceDetail(val, val2) { //跳转设备详情
 				uni.navigateTo({
-					url: '../device/device_detail'
+					url: `../device/device_detail?buidldingId=${val}&unitId=${val2}`
 				})
 			},
 			openLock(val) {
@@ -174,16 +178,12 @@
 						}
 					})
 				}
-
-
 			}
 		}
 	}
 </script>
 
 <style>
-	#home-list {}
-
 	.fixed {
 		position: fixed;
 		z-index: 99;

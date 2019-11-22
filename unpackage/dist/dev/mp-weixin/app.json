@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/regist/regist_info_1",
     "pages/home/main_home",
+    "pages/regist/regist_info_1",
     "pages/my/my",
+    "pages/home/search_result",
     "pages/login/login",
     "pages/login/forget_pwd",
     "pages/my/setting",
@@ -45,5 +46,5 @@
   "usingComponents": {
     "cu-custom": "/components/cu-custom"
   },
-  "sitemapLocation": "sitemap91.json"
+  "sitemapLocation": "sitemap71.json"
 }

@@ -37,7 +37,7 @@
 
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			uni.showLoading({
 				title: '加载中...',
 				mask: true
@@ -50,6 +50,9 @@
 			}
 			this.list = list;
 			this.listCur = list[0];
+			if(null != options){
+				console.log(options);
+			}
 		},
 		onReady() {
 			uni.hideLoading()
