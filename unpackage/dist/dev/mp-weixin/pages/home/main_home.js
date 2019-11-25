@@ -182,7 +182,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
+
 {
   data: function data() {
     return {
@@ -196,7 +198,6 @@ var _default =
           "type": "1" }] }],
 
 
-
       tabCur: 0,
       mainCur: 0,
       verticalNavTop: 0,
@@ -204,7 +205,8 @@ var _default =
       StatusBar: this.StatusBar,
       CustomBar: this.CustomBar,
       isDisable: false,
-      inputResult: '搜索幢数如:6幢' };
+      inputResult: '搜索幢数如:6幢',
+      myToken: '' };
 
   },
   onLoad: function onLoad() {
@@ -213,19 +215,45 @@ var _default =
       mask: true });
 
   },
-  created: function created() {
-    this.getData();
+  onShow: function onShow() {
+    this.getToken();
   },
-
   onReady: function onReady() {
     uni.hideLoading();
   },
-
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.getToken();
+  },
   methods: {
+    getToken: function getToken() {//请求token
+      var requestTask = uni.request({
+        url: 'http://localhost:3000/login',
+        method: 'GET',
+        success: function success(res) {
+          uni.setStorageSync('token', res.data.token);
+          console.log(uni.getStorageSync('token'));
+        },
+        fail: function fail(res, code) {
+          console.log('fail' + JSON.stringify(res));
+        } });
+
+
+      if (null != uni.getStorageSync('token')) {
+        this.myToken = uni.getStorageSync('token');
+        this.getData();
+        console.log("有token");
+      } else {
+        this.getToken();
+      }
+    },
     getData: function getData() {
       var self = this;
       var requestTask = uni.request({
         url: 'http://localhost:3000/moniData',
+        method: 'GET',
+        data: {
+          token: this.myToken },
+
         success: function success(res) {
           self.listData = res.data.buildings;
           console.log(self.listData);
@@ -255,7 +283,6 @@ var _default =
           view.fields({
             size: true },
           function (data) {
-            console.log("打印错误：" + data);
             /*data.height 有可能为  */
             if (null != data) {
               tabHeight = tabHeight + data.height;

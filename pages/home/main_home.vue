@@ -3,10 +3,11 @@
 		<cu-custom bgColor="bg-gradual-white" displayable :isBack="false">
 			<block slot="content">门禁设备</block>
 		</cu-custom>
+		
 		<view class="cu-bar bg-white search fixed" :style="[{top:CustomBar + 'px'}]">
 			<view class="search-form round">
 				<text class="cuIcon-search"></text>
-				<input  type="text" placeholder="搜索幢数如: 6幢" v-model="inputResult" ></input>
+				<input type="text" placeholder="搜索幢数如: 6幢" v-model="inputResult"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-gradual-blue shadow-blur round" @tap="searchBuilding()">搜索</button>
@@ -22,7 +23,7 @@
 			</scroll-view>
 			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 64px - 50px); padding-left: 4%; padding-right: 4%;"
 			 :scroll-into-view="'main-'+mainCur" @scroll="VerticalMain">
-				<view class="padding-lr" v-for="(item,index) in listData" :key="index" :id="'main-'+index"  style="background: white; border: white; border-radius: 20rpx;margin-top: 4%;">
+				<view class="padding-lr" v-for="(item,index) in listData" :key="index" :id="'main-'+index" style="background: white; border: white; border-radius: 20rpx;margin-top: 4%;">
 					<view class="cu-bar solid-bottom bg-white">
 						<view class="action">
 							<!-- 右边列表导航的item标题 -->
@@ -50,6 +51,7 @@
 </template>
 
 <script>
+	
 	export default {
 		data() {
 			return {
@@ -63,7 +65,6 @@
 						"type": "1"
 					}]
 				}],
-
 				tabCur: 0,
 				mainCur: 0,
 				verticalNavTop: 0,
@@ -71,7 +72,8 @@
 				StatusBar: this.StatusBar,
 				CustomBar: this.CustomBar,
 				isDisable: false,
-				inputResult: '搜索幢数如:6幢'
+				inputResult: '搜索幢数如:6幢',
+				myToken: '',
 			}
 		},
 		onLoad() {
@@ -80,19 +82,45 @@
 				mask: true
 			});
 		},
-		created() {
-			this.getData();
+		onShow() {
+			this.getToken();
 		},
-
 		onReady() {
 			uni.hideLoading()
 		},
-
+		onPullDownRefresh() {
+			this.getToken();
+		},
 		methods: {
+			getToken() { //请求token
+				const requestTask = uni.request({
+					url: 'http://localhost:3000/login',
+					method: 'GET',
+					success(res) {
+						uni.setStorageSync('token', res.data.token);
+						console.log(uni.getStorageSync('token'));
+					},
+					fail(res,code) {
+						console.log('fail' + JSON.stringify(res));
+					}
+				});
+				
+				if (null != uni.getStorageSync('token')) {
+					this.myToken = uni.getStorageSync('token');
+					this.getData();
+					console.log("有token");
+				} else {
+					this.getToken();
+				}
+			},
 			getData() {
 				var self = this;
 				const requestTask = uni.request({
 					url: 'http://localhost:3000/moniData',
+					method: 'GET',
+					data: {
+						token: this.myToken
+					},
 					success(res) {
 						self.listData = res.data.buildings;
 						console.log(self.listData);
@@ -100,7 +128,7 @@
 				})
 			},
 			searchBuilding() { //跳转搜索结果界面
-			   var result = this.inputResult.substring(this.inputResult.indexOf(":")+1,this.inputResult.length);
+				var result = this.inputResult.substring(this.inputResult.indexOf(":") + 1, this.inputResult.length);
 				uni.navigateTo({
 					url: `../home/search_result?inputResult=${result}`
 				})
@@ -122,7 +150,6 @@
 						view.fields({
 							size: true
 						}, data => {
-							console.log("打印错误：" + data)
 							/*data.height 有可能为  */
 							if (null != data) {
 								tabHeight = tabHeight + data.height;

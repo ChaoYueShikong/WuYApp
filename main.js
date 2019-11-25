@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App'
-
+import cuCustom from './components/cu-custom.vue'
+import pageHead from './components/page-head.vue'
 Vue.config.productionTip = false
 
-import cuCustom from './components/cu-custom.vue'
+
 Vue.component('cu-custom',cuCustom)
+Vue.component('page-head', pageHead)
 
 App.mpType = 'app'
 

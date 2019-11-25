@@ -189,7 +189,6 @@
 				title: '加载中...',
 				mask: true
 			});
-
 		},
 		created() {
 			this.getAddress();

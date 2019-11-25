@@ -5,6 +5,11 @@
 			"style": {}
 		},
 		{
+			"path": "pages/device/device_detail",
+			"style": {}
+		},
+
+		{
 			"path": "pages/regist/regist_info_1",
 			"style": {}
 		},
@@ -31,10 +36,6 @@
 		},
 		{
 			"path": "pages/my/setting",
-			"style": {}
-		},
-		{
-			"path": "pages/device/device_detail",
 			"style": {}
 		}
 	],

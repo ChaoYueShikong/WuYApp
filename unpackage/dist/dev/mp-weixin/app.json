@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/home/main_home",
+    "pages/device/device_detail",
     "pages/regist/regist_info_1",
     "pages/my/my",
     "pages/home/search_result",
     "pages/login/login",
     "pages/login/forget_pwd",
-    "pages/my/setting",
-    "pages/device/device_detail"
+    "pages/my/setting"
   ],
   "subPackages": [],
   "window": {
@@ -44,7 +44,8 @@
     ]
   },
   "usingComponents": {
-    "cu-custom": "/components/cu-custom"
+    "cu-custom": "/components/cu-custom",
+    "page-head": "/components/page-head"
   },
-  "sitemapLocation": "sitemap71.json"
+  "sitemapLocation": "sitemap2.json"
 }
