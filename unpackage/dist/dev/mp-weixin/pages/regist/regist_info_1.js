@@ -273,7 +273,7 @@ var _default =
       community: 1,
       city: 3,
       district: 57,
-      GetProvinceId: 2,
+      // GetProvinceId: 2,
       District: false,
       Province: false,
       Community: false,
@@ -314,7 +314,7 @@ var _default =
       mask: true });
 
   },
-  created: function created() {
+  onShow: function onShow() {
     this.getAddress();
     this.getCommunityList();
   },
@@ -325,7 +325,7 @@ var _default =
     getAddress: function getAddress() {
       var self = this;
       var requestTask = uni.request({ //请求地址接口
-        url: 'http://localhost:3000/address',
+        url: self.GLOBAL.baseUrl + 'address',
         success: function success(res) {
 
           //转换成字符串
@@ -343,7 +343,7 @@ var _default =
     getCommunityList: function getCommunityList() {
       var self = this;
       var requestTask2 = uni.request({
-        url: 'http://localhost:3000/communityList',
+        url: self.GLOBAL.baseUrl + 'communityList',
         success: function success(res) {
           var communityDatas = JSON.stringify(res.data);
           var options = JSON.parse(communityDatas.replace(/commuId/g, 'id').replace(/commuName/g, 'name'));
@@ -529,6 +529,10 @@ var _default =
             _this4.imgList2.splice(e.currentTarget.dataset.index, 1);
           }
         } });
+
+    },
+
+    updateInfo: function updateInfo() {//提交 直接写成功失败，失败提示重新上传 吐司提示
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

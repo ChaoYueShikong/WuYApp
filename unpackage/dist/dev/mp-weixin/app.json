@@ -46,6 +46,5 @@
   "usingComponents": {
     "cu-custom": "/components/cu-custom",
     "page-head": "/components/page-head"
-  },
-  "sitemapLocation": "sitemap2.json"
+  }
 }

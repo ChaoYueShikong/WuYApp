@@ -192,7 +192,7 @@ var _default =
     getDeviceInfo: function getDeviceInfo() {//获取设备详情
       var self = this;
       var requestTask = uni.request({
-        url: "http://localhost:3000/deviceInfo",
+        url: self.GLOBAL.baseUrl + 'deviceInfo',
         success: function success(res) {
           self.deviceId = res.data.data.deviceId;
           self.deviceVersion = res.data.data.deviceVersion;

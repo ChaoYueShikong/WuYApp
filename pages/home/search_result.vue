@@ -65,7 +65,7 @@
 			getUnitList(){//根据幢数搜索对应单元数  幢数： this.topTitle
 			var self = this;
 				const request = uni.request({
-					url:'http://localhost:3000/detailUnitList',
+					url: self.GLOBAL.baseUrl + 'detailUnitList',
 					success(res) {
 						self.unitList = res.data.unitList;
 					}

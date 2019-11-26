@@ -183,6 +183,9 @@ var _default =
     this.list = list;
     this.listCur = list[0];
   },
+  onShow: function onShow() {
+    //写请求数据的方法
+  },
   onReady: function onReady() {
     uni.hideLoading();
   },

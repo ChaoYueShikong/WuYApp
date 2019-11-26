@@ -149,7 +149,7 @@
 				community: 1,
 				city: 3,
 				district: 57,
-				GetProvinceId: 2,
+				// GetProvinceId: 2,
 				District: false,
 				Province: false,
 				Community: false,
@@ -190,7 +190,7 @@
 				mask: true
 			});
 		},
-		created() {
+		onShow() {
 			this.getAddress();
 			this.getCommunityList();
 		},
@@ -201,7 +201,7 @@
 			getAddress() {
 				var self = this;
 				const requestTask = uni.request({ //请求地址接口
-					url: 'http://localhost:3000/address',
+					url: self.GLOBAL.baseUrl +'address' ,
 					success(res) {
 
 						//转换成字符串
@@ -219,7 +219,7 @@
 			getCommunityList() {
 				var self = this;
 				const requestTask2 = uni.request({
-					url: 'http://localhost:3000/communityList',
+					url: self.GLOBAL.baseUrl + 'communityList',
 					success(res) {
 						var communityDatas = JSON.stringify(res.data);
 						var options = JSON.parse(communityDatas.replace(/commuId/g, 'id').replace(/commuName/g, 'name'));
@@ -406,6 +406,10 @@
 						}
 					}
 				})
+			},
+		    
+		    updateInfo(){//提交 直接写成功失败，失败提示重新上传 吐司提示
+				
 			}
 		}
 

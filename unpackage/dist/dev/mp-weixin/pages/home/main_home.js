@@ -221,13 +221,11 @@ var _default =
   onReady: function onReady() {
     uni.hideLoading();
   },
-  onPullDownRefresh: function onPullDownRefresh() {
-    this.getToken();
-  },
   methods: {
     getToken: function getToken() {//请求token
+      var self = this;
       var requestTask = uni.request({
-        url: 'http://localhost:3000/login',
+        url: self.GLOBAL.baseUrl + 'login',
         method: 'GET',
         success: function success(res) {
           uni.setStorageSync('token', res.data.token);
@@ -249,7 +247,7 @@ var _default =
     getData: function getData() {
       var self = this;
       var requestTask = uni.request({
-        url: 'http://localhost:3000/moniData',
+        url: self.GLOBAL.baseUrl + 'moniData',
         method: 'GET',
         data: {
           token: this.myToken },

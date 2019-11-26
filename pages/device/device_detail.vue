@@ -68,7 +68,7 @@
 			getDeviceInfo(){//获取设备详情
 				var self = this;
 				const requestTask = uni.request({
-					url:"http://localhost:3000/deviceInfo",
+					url: self.GLOBAL.baseUrl + 'deviceInfo',
 					success(res) {
 						self.deviceId = res.data.data.deviceId;
 						self.deviceVersion = res.data.data.deviceVersion;

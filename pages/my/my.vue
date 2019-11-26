@@ -59,6 +59,9 @@
 			this.list = list;
 			this.listCur = list[0];
 		},
+		onShow() {
+			//写请求数据的方法
+		},
 		onReady() {
 			uni.hideLoading()
 		},

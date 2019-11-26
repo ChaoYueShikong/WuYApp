@@ -73,7 +73,7 @@
 				CustomBar: this.CustomBar,
 				isDisable: false,
 				inputResult: '搜索幢数如:6幢',
-				myToken: '',
+				myToken: ''
 			}
 		},
 		onLoad() {
@@ -88,13 +88,11 @@
 		onReady() {
 			uni.hideLoading()
 		},
-		onPullDownRefresh() {
-			this.getToken();
-		},
 		methods: {
 			getToken() { //请求token
+			    var self = this;
 				const requestTask = uni.request({
-					url: 'http://localhost:3000/login',
+					url:  self.GLOBAL.baseUrl + 'login',
 					method: 'GET',
 					success(res) {
 						uni.setStorageSync('token', res.data.token);
@@ -116,7 +114,7 @@
 			getData() {
 				var self = this;
 				const requestTask = uni.request({
-					url: 'http://localhost:3000/moniData',
+					url:  self.GLOBAL.baseUrl + 'moniData',
 					method: 'GET',
 					data: {
 						token: this.myToken
